@@ -5,12 +5,24 @@ from tensorflow import keras
 from collections import deque
 
 
-# Model
+# Model DQN
 model = tf.keras.Sequential([
   tf.keras.layers.Dense(64, activation="relu", input_shape=[4]),
   tf.keras.layers.Dense(32, activation="relu"),
   tf.keras.layers.Dense(2)
 ])
+
+# Model Dueling DQN
+# input_states = tf.keras.layers.Input(shape=[4])
+# hidden1 = tf.keras.layers.Dense(32, activation="relu")(input_states)
+# hidden2 = tf.keras.layers.Dense(16, activation="relu")(hidden1)
+# state_values = tf.keras.layers.Dense(2)(hidden2)
+# raw_advantages = tf.keras.layers.Dense(2)(hidden2)
+# advantages = raw_advantages - tf.reduce_max(raw_advantages, axis=1,
+#                                             keepdims=True)
+# Q_values = state_values + advantages
+# model = tf.keras.Model(inputs=[input_states], outputs=[Q_values])
+
 
 batch_size = 64
 gamma = 0.99
